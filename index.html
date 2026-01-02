@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thiệp Mời Tốt Nghiệp - Quốc Phước</title>
+    <title>Thiệp Mời Tốt Nghiệp - Tone Hồng</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0; padding: 0; width: 100%; height: 100%;
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            /* Đổi sang tone hồng nhạt mộng mơ */
+            background: linear-gradient(135deg, #fce7f3, #fbcfe8, #f9a8d4);
             display: flex; justify-content: center; align-items: center;
             overflow: hidden;
         }
@@ -19,26 +20,28 @@
             background: white;
             padding: 30px;
             border-radius: 25px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 50px rgba(219, 39, 119, 0.2); /* Bóng hồng nhạt */
             width: 320px;
             text-align: center;
             z-index: 100;
             transition: all 0.6s ease;
         }
 
-        h2 { color: #1e40af; margin-top: 0; font-size: 20px; }
+        /* Chỉnh màu chữ tiêu đề tháng sang hồng đậm */
+        h2 { color: #be185d; margin-top: 0; font-size: 20px; }
         table { width: 100%; border-collapse: collapse; margin: 15px 0; }
-        th { color: #94a3b8; font-size: 12px; padding-bottom: 8px; }
-        td { padding: 10px; font-weight: 500; border-radius: 10px; position: relative; }
+        th { color: #f472b6; font-size: 12px; padding-bottom: 8px; }
+        td { padding: 10px; font-weight: 500; border-radius: 10px; position: relative; color: #4a5568; }
 
+        /* Nút ngày 18 màu hồng đặc trưng */
         .btn-18 {
-            background: #2563eb; color: white;
+            background: #ec4899; color: white;
             font-weight: bold; cursor: pointer;
         }
 
         .btn-18::after {
             content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 10px; border: 2px solid #2563eb;
+            border-radius: 10px; border: 2px solid #ec4899;
             animation: ping 1.5s infinite;
         }
 
@@ -65,7 +68,7 @@
             background: white; 
             padding: 12px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(219, 39, 119, 0.3);
         }
 
         #invite-page img {
@@ -75,17 +78,17 @@
         }
 
         .footer-text {
-            color: white;
+            color: #be185d; /* Chữ hồng đậm trên nền hồng nhạt */
             margin-top: 15px;
             font-size: 16px;
             font-weight: 600;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 1px 5px rgba(255, 255, 255, 0.8);
         }
 
         /* --- HIỆU ỨNG BÓNG BAY --- */
         .balloon-item {
             position: fixed;
-            bottom: -300px; /* Cho to nên để sâu xuống xíu cho mượt */
+            bottom: -300px;
             z-index: 200; 
             pointer-events: none;
             animation: flyUp 6s linear forwards;
@@ -117,14 +120,14 @@
         <tr><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td></tr>
         <tr><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td></tr>
     </table>
-    <p style="color: #64748b; font-size: 12px;">Bấm vào ngày 18 để mở thiệp!</p>
+    <p style="color: #f472b6; font-size: 12px;">Bấm vào ngày 18 để mở thiệp!</p>
 </div>
 
 <div id="invite-page">
     <div class="image-frame">
-        <img src="https://i.postimg.cc/prfhFCnV/Thiep-moi-Chuc-mung-Su-kien-Le-Tot-nghiep-Hien-dai-Xanh-vang-(1).png" alt="Thiệp Mời">
+        <img src="https://i.postimg.cc/C1bWTnqs/Thiep-moi-Chuc-mung-Su-kien-Le-Tot-nghiep-Hien-dai-Xanh-vang-(4).png" alt="Thiệp Mời">
     </div>
-    <p class="footer-text"></p>
+    <p class="footer-text">🌸</p>
 </div>
 
 <script>
@@ -133,7 +136,7 @@
         'https://i.postimg.cc/6QCFvGp6/300642d4-bd06-4b39-a079-454ff93b7ceb-removebg-preview.png',
         'https://i.postimg.cc/QtxSdBBm/da3fbb4f-3ae1-41a0-a812-142fecf8b91c-removebg-preview.png',
         'https://i.postimg.cc/500qMZTX/f6b125eb-a499-4ad9-98c5-682f04957e6a-removebg-preview.png',
-        'https://i.postimg.cc/9fVzTZB2/4a2cada2-6831-4747-b7ba-8bdf7cefa21a-removebg-preview.png', // Ảnh được yêu cầu to gấp 3
+        'https://i.postimg.cc/9fVzTZB2/4a2cada2-6831-4747-b7ba-8bdf7cefa21a-removebg-preview.png',
         'https://i.postimg.cc/s2RGct3F/5be3a324-e35b-47e3-a58f-a76111ba97a0-removebg-preview.png'
     ];
 
@@ -154,12 +157,11 @@
         
         let size;
         if (randomIndex === 4) { 
-            // ẢNH MỚI 1: TO GẤP 3
-            size = Math.random() * 50 + 280; // Kích thước từ 280px - 330px (Siêu to)
+            size = Math.random() * 50 + 280; 
         } else if (randomIndex === 0) {
-            size = Math.random() * 30 + 130; // Mũ (130-160px)
+            size = Math.random() * 30 + 130; 
         } else {
-            size = Math.random() * 30 + 80;  // Các ảnh khác (80-110px)
+            size = Math.random() * 30 + 80; 
         }
         
         balloon.style.width = size + 'px';
@@ -169,7 +171,7 @@
         setTimeout(() => balloon.remove(), 7000);
     }
 
-    // --- PHÁO HOA ---
+    // --- PHÁO HOA TONE HỒNG VÀ VÀNG ---
     const canvas = document.getElementById("fireworks");
     const ctx = canvas.getContext("2d");
     let particles = [];
@@ -202,7 +204,8 @@
     }
 
     function startFireworks() {
-        const colors = ['#ff0000', '#ffd700', '#ffffff', '#00ff00', '#00ced1'];
+        // Màu pháo hoa được đổi thành hồng, trắng và vàng kim
+        const colors = ['#f472b6', '#ec4899', '#ffffff', '#fbbf24', '#db2777'];
         setInterval(() => {
             const x = Math.random() * canvas.width;
             const y = Math.random() * canvas.height * 0.5;
