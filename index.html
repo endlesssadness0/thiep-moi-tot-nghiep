@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thiệp Mời Tốt Nghiệp</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>Thiệp Mời - NGUYEN DINH QUOC PHUOC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0; padding: 0; width: 100%; height: 100%;
@@ -16,14 +16,10 @@
 
         /* --- TRANG 1: LỊCH --- */
         #calendar-card {
-            background: white;
-            padding: 30px;
-            border-radius: 25px;
+            background: white; padding: 30px; border-radius: 25px;
             box-shadow: 0 25px 50px rgba(219, 39, 119, 0.2);
-            width: 320px;
-            text-align: center;
-            z-index: 100;
-            transition: opacity 1s ease; /* Làm mờ lịch chậm hơn */
+            width: 320px; text-align: center; z-index: 100;
+            transition: opacity 1s ease;
         }
 
         h2 { color: #be185d; margin-top: 0; font-size: 20px; }
@@ -32,90 +28,72 @@
         td { padding: 10px; font-weight: 500; border-radius: 10px; color: #4a5568; }
 
         .btn-18 {
-            background: #ec4899; color: white;
-            font-weight: bold; cursor: pointer;
-            position: relative;
-            z-index: 1000;
-            transition: all 1.5s ease-in-out; /* Tăng thời gian chuyển cảnh của số 18 */
+            background: #ec4899; color: white; font-weight: bold; cursor: pointer;
+            position: relative; z-index: 1000; transition: all 1.5s ease-in-out;
         }
 
-        /* Hiệu ứng Zoom số 18 chậm và mờ dần */
         .zoom-active {
-            position: fixed !important;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%) scale(80); /* Phóng to hơn nữa */
-            border-radius: 50%;
-            z-index: 9999;
-            opacity: 0;
-            filter: blur(5px);
+            position: fixed !important; top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(80);
+            border-radius: 50%; z-index: 9999; opacity: 0; filter: blur(5px);
         }
 
-        .btn-18::after {
-            content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 10px; border: 2px solid #ec4899;
-            animation: ping 1.5s infinite;
+        /* --- CHỮ CHẠY ĐẰNG SAU (Z-INDEX 10) --- */
+        .marquee-wrapper {
+            position: fixed; width: 100%; white-space: nowrap; 
+            overflow: hidden; display: none; z-index: 10;
+        }
+        #marquee-top { top: 10%; }
+        #marquee-bottom { bottom: 10%; }
+
+        .marquee-inner {
+            display: inline-block; white-space: nowrap;
+            animation: marqueeSync 25s linear infinite;
+        }
+        .reverse-scroll { animation: marqueeSyncReverse 25s linear infinite; }
+
+        .marquee-text {
+            font-size: 120px; font-weight: 900;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase; letter-spacing: 30px; padding-right: 100px;
         }
 
-        @keyframes ping {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.5); opacity: 0; }
-        }
+        @keyframes marqueeSync { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes marqueeSyncReverse { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-        /* --- TRANG 2: THIỆP MỜI --- */
+        /* --- TRANG 2: THIỆP MỜI (Z-INDEX 50) --- */
         #invite-page {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            width: 85%;
-            max-width: 450px; 
-            z-index: 50;
-            opacity: 0;
-            transform: scale(0.5);
+            display: none; flex-direction: column; align-items: center;
+            width: 85%; max-width: 450px; z-index: 50; 
+            opacity: 0; transform: scale(0.5); 
             transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
-        .show-invite {
-            display: flex !important;
-            opacity: 1 !important;
-            transform: scale(1) !important;
-        }
-
+        .show-invite { display: flex !important; opacity: 1 !important; transform: scale(1) !important; }
         .image-frame {
-            width: 100%;
-            background: white; 
-            padding: 12px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(219, 39, 119, 0.3);
+            width: 100%; background: white; padding: 12px;
+            border-radius: 15px; box-shadow: 0 15px 35px rgba(219, 39, 119, 0.3);
         }
+        #invite-page img { width: 100%; display: block; border-radius: 8px; }
 
-        #invite-page img {
-            width: 100%;
-            display: block;
-            border-radius: 8px;
-        }
-
-        .footer-text {
-            color: #be185d;
-            margin-top: 15px;
-            font-size: 20px;
+        /* --- CONTAINER BÓNG BAY LỚP TRÊN CÙNG (Z-INDEX 99999) --- */
+        #balloon-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 99999; /* Đảm bảo cao hơn tất cả */
         }
 
         .balloon-item {
-            position: fixed;
-            bottom: -300px;
-            z-index: 200; 
-            pointer-events: none;
-            animation: flyUp 6s linear forwards;
+            position: absolute; bottom: -200px;
+            animation: flyUp 7s linear forwards;
         }
 
         @keyframes flyUp {
             0% { transform: translateY(0) rotate(0deg); opacity: 0; }
             10% { opacity: 1; }
             90% { opacity: 1; }
-            100% { transform: translateY(-150vh) rotate(360deg); opacity: 0; }
+            100% { transform: translateY(-130vh) rotate(360deg); opacity: 0; }
         }
 
-        canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 10; }
+        canvas { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 5; }
     </style>
 </head>
 <body>
@@ -125,6 +103,22 @@
 </audio>
 
 <canvas id="fireworks"></canvas>
+
+<div id="balloon-container"></div>
+
+<div class="marquee-wrapper" id="marquee-top">
+    <div class="marquee-inner">
+        <span class="marquee-text">GRADUATION PARTY • GRADUATION PARTY • </span>
+        <span class="marquee-text">GRADUATION PARTY • GRADUATION PARTY • </span>
+    </div>
+</div>
+
+<div class="marquee-wrapper" id="marquee-bottom">
+    <div class="marquee-inner reverse-scroll">
+        <span class="marquee-text">NGUYEN DINH QUOC PHUOC • NGUYEN DINH QUOC PHUOC • </span>
+        <span class="marquee-text">NGUYEN DINH QUOC PHUOC • NGUYEN DINH QUOC PHUOC • </span>
+    </div>
+</div>
 
 <div id="calendar-card">
     <h2>Tháng 1 - 2026</h2>
@@ -143,7 +137,6 @@
     <div class="image-frame">
         <img src="https://i.postimg.cc/C1bWTnqs/Thiep-moi-Chuc-mung-Su-kien-Le-Tot-nghiep-Hien-dai-Xanh-vang-(4).png" alt="Thiệp Mời">
     </div>
-    <p class="footer-text">🌸</p>
 </div>
 
 <script>
@@ -157,42 +150,52 @@
     ];
 
     function startCelebration() {
+        const music = document.getElementById('bg-music');
         const day18 = document.getElementById('day-18');
         const calendar = document.getElementById('calendar-card');
-        const music = document.getElementById('bg-music');
 
-        // Phát nhạc ngay khi nhấn để "mồi" cảm xúc
-        music.play().catch(error => console.log("Lỗi nhạc:", error));
-
-        // 1. Số 18 bắt đầu zoom chậm và mờ dần trong 1.5s
+        music.play().catch(e => console.log("Music error"));
         day18.classList.add('zoom-active');
         calendar.style.opacity = '0';
 
-        // 2. TẠO KHOẢNG NGHỈ (3 giây nhạc dạo trước khi hiện thiệp)
         setTimeout(() => {
             calendar.style.display = 'none';
-            const invite = document.getElementById('invite-page');
-            invite.classList.add('show-invite');
+            document.getElementById('invite-page').classList.add('show-invite');
             
-            // Pháo hoa và bóng bay xuất hiện cùng lúc với thiệp
+            document.getElementById('marquee-top').style.display = 'block';
+            document.getElementById('marquee-bottom').style.display = 'block';
+            
             startFireworks();
-            setInterval(createBalloon, 450);
-        }, 3000); // Đợi đúng 3 giây
+            // Tăng tần suất bóng bay lên cho rôm rả
+            setInterval(createBalloon, 350); 
+        }, 3000); 
     }
 
     function createBalloon() {
+        const container = document.getElementById('balloon-container');
         const balloon = document.createElement('img');
         const randomIndex = Math.floor(Math.random() * balloonImages.length);
+        
         balloon.src = balloonImages[randomIndex];
         balloon.className = 'balloon-item';
-        balloon.style.left = Math.random() * 90 + 5 + 'vw';
-        let size = (randomIndex === 4) ? (Math.random() * 50 + 280) : (randomIndex === 0) ? (Math.random() * 30 + 130) : (Math.random() * 30 + 80);
+        
+        // Vị trí ngang ngẫu nhiên
+        balloon.style.left = Math.random() * 90 + 'vw';
+        
+        // Kích thước ngẫu nhiên
+        let size = Math.random() * 70 + 80;
         balloon.style.width = size + 'px';
-        balloon.style.animationDuration = (Math.random() * 2 + 5) + 's';
-        document.body.appendChild(balloon);
-        setTimeout(() => balloon.remove(), 7000);
+        
+        // Tốc độ bay ngẫu nhiên (chậm hơn chút cho đẹp)
+        balloon.style.animationDuration = (Math.random() * 3 + 5) + 's';
+        
+        container.appendChild(balloon);
+        
+        // Tự xóa sau khi bay hết màn hình
+        setTimeout(() => balloon.remove(), 7500);
     }
 
+    // --- PHÁO HOA ---
     const canvas = document.getElementById("fireworks");
     const ctx = canvas.getContext("2d");
     let particles = [];
